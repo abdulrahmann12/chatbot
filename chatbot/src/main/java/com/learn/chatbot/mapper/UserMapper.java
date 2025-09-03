@@ -13,5 +13,6 @@ public interface UserMapper {
     @Mapping(target = "id", ignore = true) 
     @Mapping(target = "messages", ignore = true)
     @Mapping(target = "conversations", ignore = true)
+    @Mapping(target = "role", ignore = true)
 	User toENTITY(RegisterRequest registerRequest);   
 }

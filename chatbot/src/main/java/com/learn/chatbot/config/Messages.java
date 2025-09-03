@@ -140,4 +140,15 @@ public class Messages {
 	// ==================== Purchase Messages ====================  
     public static final String PURCHASE_NOT_FOUND = "Purchase not found";
     public static final String ADD_PURCHASE = "Purchase Added successfully";
+    
+    // ==================== Conversation Messages ====================  
+    public static final String CONVERSATION_ALREADY_EXISTS = "Conversation with this name already exists";
+    public static final String CONVERSATION_NOT_FOUND = "Conversation not found";
+    public static final String DELETE_CONVERSATION = "Conversation deleted successfully";
+    public static final String ADD_CONVERSATION = "Conversation Added successfully";
+    public static final String CONVERSATION_NOT_BELONG_TO_USER = "Conversation does not belong to this user";
+    public static final String CONVERSATIONS_FETCHED = "Conversations fetched successfully";
+    public static final String CONVERSATION_HISTORY_FETCHED = "Conversation history fetched successfully";
+
+
 }
