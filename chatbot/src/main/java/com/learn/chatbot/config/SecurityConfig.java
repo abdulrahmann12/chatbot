@@ -44,6 +44,7 @@ public class SecurityConfig {
 					.requestMatchers(HttpMethod.GET,"/api/products/**").permitAll()
 					.requestMatchers("/api/auth/change-password").authenticated()
 					.requestMatchers("/api/auth/refresh-token").permitAll()
+					.requestMatchers("/api/auth/create-user").permitAll()
 					.anyRequest().authenticated())
 			.sessionManagement(session -> session
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

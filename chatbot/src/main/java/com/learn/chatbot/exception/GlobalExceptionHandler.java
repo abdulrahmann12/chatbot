@@ -19,6 +19,7 @@ import com.learn.chatbot.config.Messages;
 import com.learn.chatbot.dto.BasicResponse;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.validation.ConstraintViolationException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -74,7 +75,7 @@ public class GlobalExceptionHandler {
 
 
     // === Validation Exceptions === //
-
+   
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<BasicResponse> handleValidation(MethodArgumentNotValidException ex, WebRequest request) {
         String errorMessage = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
@@ -98,6 +99,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ResponseEntity<BasicResponse> handleMethodNotSupported(HttpRequestMethodNotSupportedException ex, WebRequest request) {
         return buildErrorResponse(Messages.REQUEST_NOT_SUPPORTED, request, HttpStatus.METHOD_NOT_ALLOWED);
+    }
+    
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<BasicResponse> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
+        String firstError = ex.getConstraintViolations()
+                .stream()
+                .findFirst()
+                .map(v -> v.getMessage())
+                .orElse("Validation failed");
+                return buildErrorResponse(firstError, request, HttpStatus.BAD_REQUEST);   
+                
     }
     
 

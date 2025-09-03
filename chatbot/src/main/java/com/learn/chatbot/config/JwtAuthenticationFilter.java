@@ -117,6 +117,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 	            path.equals("/actuator/metrics") ||
 	            path.equals("/api/auth/forget-password") ||
 	            path.equals("/api/auth/reset-password") ||
+	            path.equals("/api/auth/create-user") ||
 	            path.equals("/api/auth/logout") ||
 	            path.equals("/api/auth/refresh-token") ;
 	 }

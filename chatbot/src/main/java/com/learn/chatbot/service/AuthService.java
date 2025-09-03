@@ -18,6 +18,7 @@ import com.learn.chatbot.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -43,7 +44,7 @@ public class AuthService {
 	}
 
 	@Transactional
-	public AuthResponse createUser(RegisterRequest registerRequest) {
+	public AuthResponse createUser(@Valid RegisterRequest registerRequest) {
 
 		if (userRepository.findByUsername(registerRequest.getUsername()).isPresent()) {
 	        throw new RuntimeException(Messages.USERNAME_ALREADY_EXISTS);
